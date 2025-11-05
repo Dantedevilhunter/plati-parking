@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<actions>
+    <action intentName="actions.intent.CREATE_THING">
+        <fulfillment urlTemplate="app://parkirajlako.llitc.com/pay{?city,zone}">
+            <parameter-mapping
+                intentParameter="thing.name"
+                urlParameter="city" />
+            <parameter-mapping
+                intentParameter="thing.description"
+                urlParameter="zone" />
+        </fulfillment>
+
+        <parameter name="thing.name">
+            <entity-set-reference entitySetId="CityEntitySet" />
+        </parameter>
+
+        <parameter name="thing.description">
+            <entity-set-reference entitySetId="ZoneEntitySet" />
+        </parameter>
+    </action>
+
+    <entity-set entitySetId="CityEntitySet">
+        <!-- Add cities you want the assistant to recognize here -->
+        <!-- For example: -->
+        <entity name="Belgrade" identifier="belgrade" />
+        <entity name="Novi Sad" identifier="novisad" />
+        <entity name="Obrenovac" identifier="obrenovac" />
+    </entity-set>
+
+    <entity-set entitySetId="ZoneEntitySet">
+        <!-- Add zones you want the assistant to recognize here -->
+        <!-- For example: -->
+        <entity name="Zone 1" identifier="zona1" />
+        <entity name="Zone 2" identifier="zona2" />
+        <entity name="Zone 3" identifier="zona3" />
+        <entity name="Red Zone" identifier="red" />
+    </entity-set>
+</actions>
